@@ -1,0 +1,59 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name" class="form-control">
+        <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('name')?.errors?.['required']">Name is required.</div>
+            <div *ngIf="signupForm.get('name')?.errors?.['maxlength']">Name can't be longer than 100 characters.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control">
+        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="signupForm.get('email')?.errors?.['email']">Invalid Email Address.</div>
+            <div *ngIf="signupForm.get('email')?.errors?.['maxlength']">Email can't be longer than 50 characters.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control">
+        <div *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('phoneNumber')?.errors?.['required']">Phone number is required.</div>
+            <div *ngIf="signupForm.get('phoneNumber')?.errors?.['pattern']">Invalid phone number format.</div>
+            <div *ngIf="signupForm.get('phoneNumber')?.errors?.['maxlength']">Phone number can't be longer than 13 characters.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control">
+        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</div>
+            <div *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</div>
+            <div *ngIf="signupForm.get('password')?.errors?.['maxlength']">Password can't be longer than 20 characters.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" formControlName="role" class="form-control">
+            <option value="">Select a role</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select>
+        <div *ngIf="signupForm.get('role')?.invalid && signupForm.get('role')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('role')?.errors?.['required']">Role is required.</div>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="signupForm.invalid" class="submit-button">Submit</button>
+</form>
+
+<div class="mt-2 d-flex justify-content-center logincss">
+    <label>Already a user</label>
+    <button class="login-button" (click)="login()">Login</button>
+</div>

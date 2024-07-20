@@ -1,0 +1,53 @@
+<!-- 
+<div>
+    <app-sidbar></app-sidbar>
+  <div class="container">
+  
+    <h2>Manage Roles</h2>
+    <div class="search-section">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search roles" />
+      <button (click)="searchRoles()">Search</button>
+    </div>
+
+    <div class="role-list">
+    
+      <table id="excel-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Is Active</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let role of searchRoles()">
+            <td>{{ role.id }}</td>
+            <td>
+              <span *ngIf="editRoleId !== role.id">{{ role.name }}</span>
+              <input *ngIf="editRoleId === role.id" [(ngModel)]="editRoleName" />
+            </td>
+            <td>
+              <span *ngIf="editRoleId !== role.id">{{ role.description }}</span>
+              <input *ngIf="editRoleId === role.id" [(ngModel)]="editRoleDescription" />
+            </td>
+            <td>
+              <span *ngIf="editRoleId !== role.id">{{ role.isActive ? 'Yes' : 'No' }}</span>
+              <label *ngIf="editRoleId === role.id">
+                <input type="checkbox" [(ngModel)]="editRoleIsActive" />
+              </label>
+            </td>
+            <td>
+              <button *ngIf="editRoleId !== role.id" (click)="startEditRole(role)">Edit</button>
+              <button *ngIf="editRoleId === role.id" (click)="updateRole()">Update</button>
+              <button (click)="deleteRole(role)">Delete</button>
+            </td>
+          </tr>
+
+         
+        </tbody>
+      </table>
+
+    
+ -->
